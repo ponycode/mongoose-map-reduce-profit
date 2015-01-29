@@ -1,8 +1,8 @@
 ( function(){
     'use strict';
     
-    var Job = require('./lib/job' +
-    var mapReduceSimulator = require('./');
+    var Job = require('./lib/job');
+    var mapReduceSimulator = require('./lib/map-reduce-simulator');
     
     exports.addToSchema = function( schema, options ){
         schema.plugin( MongooseMapReduceProfit, options );
