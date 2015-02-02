@@ -7,7 +7,7 @@ offers automatic job tracking so you don't have to keep track of the last run da
 
 ## Defining Map Reduce Jobs
 
-You can define your job in your mongoose schema or in separate files. This plugin adds a `defineIncrementalMapReduceJob()` function to mongoose schemas. Start by calling `defineIncrementalMapReduceJob` with a job
+You can define your job in your mongoose schema or in separate files. This plugin adds a `defineIncrementalMapReduceJob()` function to mongoose schemas. Start by calling `defineIncrementalMapReduceJob` with a unique job
 name and then defining your job details with the returned `Job` object. You should define all of your jobs at the same time you define all of your mongoose models.
 
 ```javascript
@@ -93,3 +93,8 @@ Task.debugIncrementalMapReduceJob( "job1", function( error, results ){
 ```
 
 Since the job tests are not run inside of mongo you can set breakpoints and use `console.log`.
+
+
+##Example
+
+You can find an example of testing a job using mocha in the /test/main.test.js file. To run the test download this project and run `grunt test`. Note: You'll need to have mongodb running when you run the tests.
