@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://jkennedy1980@github.com/jkennedy1980/mongoose-map-reduce-profit.git"
+    "url": "https://jkennedy1980@github.com/ponycode/mongoose-map-reduce-profit.git"
   },
   "keywords": [
     "mongo",
@@ -44,7 +44,7 @@
   "author": "Joshua Kennedy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jkennedy1980/mongoose-map-reduce-profit/issues"
+    "url": "https://github.com/ponycode/mongoose-map-reduce-profit/issues"
   },
-  "homepage": "https://github.com/jkennedy1980/mongoose-map-reduce-profit"
+  "homepage": "https://github.com/ponycode/mongoose-map-reduce-profit"
 }
