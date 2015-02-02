@@ -2,7 +2,8 @@
 A mongoose plugin to help ease mongo/mongoose incremental map-reduce jobs
 
 Creating [incremental map-reduce](http://docs.mongodb.org/manual/tutorial/perform-incremental-map-reduce/) jobs is a pain because testing is difficult. This plugin helps you by creating a way to define a job and then offering a way to test your job outside of mongo where you can set breakpoints and use console.log. This plugin also
-offers automatic job tracking so you don't have to save the last run date.
+offers automatic job tracking so you don't have to keep track of the last run date. You may define as many jobs as necessary on a given collection.
+
 
 ## Defining Map Reduce Jobs
 
@@ -17,9 +18,11 @@ job1.verbose = true;
 
 job1.buildQuery = function( runSpec ){
     if( runSpec.incremental ){
+        // This is an incremental job, fetch only the new documents
         return { createdDate: { $gt: runSpec.runDate } };
     }else{
-        return {};
+        // This is a full job, fetch all the things
+        return {}; 
     }
 };
 
@@ -39,7 +42,7 @@ job1.map = function(){
         }
         currentDate = new Date( currentDate.getTime() + MS_IN_DAY );
     }
-};    
+};
 
 job1.reduce = function( key, values ){
     var totals = { open: 0, closed: 0 };
