@@ -7,7 +7,7 @@ offers automatic job tracking so you don't have to save the last run date.
 ## Defining Map Reduce Jobs
 
 You can define your job in your mongoose schema or in separate files. This plugin adds a `defineIncrementalMapReduceJob()` function to mongoose schemas. Start by calling `defineIncrementalMapReduceJob` with a job
-name and then defining your job details with the returned `Job` object.
+name and then defining your job details with the returned `Job` object. You should define all of your jobs at the same time you define all of your mongoose models.
 
 ```javascript
 
@@ -56,7 +56,7 @@ job1.reduce = function( key, values ){
 
 ## Running Map Reduce Jobs
 
-This plugin also adds a `performIncrementalMapReduceJob` function to your models. Run a job by calling `performIncrementalMapReduceJob` with the proper job name.
+This plugin adds a `performIncrementalMapReduceJob` function to your models. Run a job by calling `performIncrementalMapReduceJob` with the proper job name. Be sure you have already defined your jobs by the time your try to run one.
 
 ```
 Task.performIncrementalMapReduceJob( "job1", function( error, results ){
@@ -67,7 +67,7 @@ Task.performIncrementalMapReduceJob( "job1", function( error, results ){
 
 ## Testing Map Reduce Jobs
 
-This plugin adds a `debugIncrementalMapReduceJob` function to your models. Test a job by calling `debugIncrementalMapReduceJob` with the proper job name.
+This plugin adds a `debugIncrementalMapReduceJob` function to your models. Test a job by calling `debugIncrementalMapReduceJob` with the proper job name. Be sure you have already defined your jobs by the time your try to test one.
 
 ```
 Task.debugIncrementalMapReduceJob( "job1", function( error, results ){
