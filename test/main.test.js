@@ -20,7 +20,14 @@
             //});
         });
         
-        it( 'more general', function( done ){
+        it( 'works once', function( done ) {
+            Task.performIncrementalMapReduceJob( "job1", function( error, results ){
+                console.log( "GOT RESULTS", results, error );
+                done();
+            });
+        });
+
+        it.skip( 'works many times', function( done ){
 
             function _insertRecordsTask( taskNumber ){
                 return function( done ){

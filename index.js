@@ -3,7 +3,10 @@
     
     var Job = require('./lib/job');
     var mapReduceSimulator = require('./lib/map-reduce-simulator');
-    
+    require('./lib/job-tracker-model');
+    var mongoose = require('mongoose');
+    var MapReduceJobTracker = mongoose.model('MapReduceJobTracker');
+
     exports.addToSchema = function( schema, options ){
         schema.plugin( MongooseMapReduceProfit, options );
     };
@@ -12,7 +15,7 @@
         
         var jobs = {};
         
-        schema.defineJob = function( name ){
+        schema.defineIncrementalMapReduceJob = function( name ){
             var job = new Job( name );
             jobs[name] = job;
             return job;
@@ -29,7 +32,11 @@
                 if( error ) return callback( error, false );
                 Model.mapReduce( command, function( error, results ){
                     if( error ) return callback( error, false );
-                    callback( false, results );
+
+                    MapReduceJobTracker.recordRunForJobName( job.name, function( recordError, success ){
+                        callback( recordError, results );
+                    });
+                    
                 });
             });
         };

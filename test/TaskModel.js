@@ -25,7 +25,7 @@
         };
     };
     
-    var job1 = TaskSchema.defineJob( "job1" );
+    var job1 = TaskSchema.defineIncrementalMapReduceJob( "job1" );
     //job1.out = { replace: "test-results" };
     job1.out = "test-results";
     job1.verbose = true;
