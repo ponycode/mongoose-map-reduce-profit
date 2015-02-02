@@ -69,6 +69,9 @@ The job object has the following customizable properties:
 
 This plugin adds a `performIncrementalMapReduceJob` function to your models. Run a job by calling `performIncrementalMapReduceJob` with the proper job name. Be sure you have already defined your jobs by the time your try to run one.
 
+When you call `performIncrementalMapReduceJob`, the plugin will query to see if the job has ever run before. If the job has been run, the `buildQuery` function will be called with a runSpec that has `runSpec.incremental` set to true and
+`runSpec.runDate` equal to the last date the job was run.
+
 ```
 Task.performIncrementalMapReduceJob( "job1", function( error, results ){
     // console.log( "GOT RESULTS", results, error ); // This won't work because it is run inside of mongo
